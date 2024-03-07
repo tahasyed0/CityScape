@@ -6,28 +6,30 @@ public class Ufo {
     private int y;
     private int dx = Math.random() >= 0.5 ? 1 : -1;
     private int dy = Math.random() >= 0.5 ? 1 : -1;
+    private CityScape cityScape;
 
-    public Ufo(int x, int y) {
+    public Ufo(CityScape cityScape, int x, int y) {
+        this.cityScape = cityScape;
         this.x = x;
         this.y = y;
     }
 
     public void move() {
 
-        if (y > CityScape.height-440) {
-            y = (int) (Math.random()*(CityScape.height-440));
+        if (y > cityScape.getHeight()-440) {
+            y = (int) (Math.random()*(cityScape.getHeight()-440));
         }
-        if (x > CityScape.width-40) {
-            x = (int) (Math.random()*(CityScape.width-40));
+        if (x > cityScape.getWidth()-40) {
+            x = (int) (Math.random()*(cityScape.getWidth()-40));
         }
 
         if (x + dx < 0) {
             dx = 1;
-        } else if (x + dx + 40 > CityScape.width) {
+        } else if (x + dx + 40 > cityScape.getWidth()) {
             dx = -1;
-        } else if (y + dy < Math.max(0, CityScape.height-700)) {
+        } else if (y + dy < Math.max(0, cityScape.getHeight()-700)) {
             dy = 1;
-        } else if (y + dy + 15 > CityScape.height-440) {
+        } else if (y + dy + 15 > cityScape.getHeight()-440) {
             dy = -1;
         }
         x += dx;

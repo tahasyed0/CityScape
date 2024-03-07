@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 public class CityScape extends JPanel {
 
-    public static int width = 1020;
-    public static int height = 640;
     private Building[] b = new Building[40];
     private Ufo[] ufos = new Ufo[5];
 
@@ -16,7 +14,7 @@ public class CityScape extends JPanel {
         double[] lights = {0.5, 0.3, 0.74, 0.6, 0.5, 0.3, 0.7, 0.5};
         int curr = 10;
         for (int i = 0; i < b.length; i++) {
-            b[i] = new Building(curr, height-(yWindows[i%yWindows.length]*30 + (yWindows[i%yWindows.length]+1)*5 + 30), xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
+            b[i] = new Building(this, curr, getHeight()-(yWindows[i%yWindows.length]*30 + (yWindows[i%yWindows.length]+1)*5 + 30), xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
             curr += 10 + xWindows[i%xWindows.length]*30 + (xWindows[i%xWindows.length]+1)*5;
         }
 
@@ -24,11 +22,11 @@ public class CityScape extends JPanel {
             stars.add(new Integer[]{(int) Math.floor(Math.random() * 2000), (int) Math.floor(Math.random() * 2000)});
         }
 
-        ufos[0] = new Ufo(0, 0);
-        ufos[1] = new Ufo(300, 20);
-        ufos[2] = new Ufo(5, 300);
-        ufos[3] = new Ufo(250, 250);
-        ufos[4] = new Ufo(70, 2);
+        ufos[0] = new Ufo(this, 0, 0);
+        ufos[1] = new Ufo(this, 300, 20);
+        ufos[2] = new Ufo(this, 5, 300);
+        ufos[3] = new Ufo(this, 250, 250);
+        ufos[4] = new Ufo(this, 70, 2);
     }
 
     public void move() {
@@ -39,12 +37,10 @@ public class CityScape extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        width = this.getWidth();
-        height = this.getHeight();
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
-        g2d.fillRect(0, 0, width, height);
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         //stars
@@ -78,7 +74,7 @@ public class CityScape extends JPanel {
         CityScape cityScape = new CityScape();
 
         frame.add(cityScape);
-        frame.setSize(width, height);
+        frame.setSize(1020, 640);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

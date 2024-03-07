@@ -1,8 +1,4 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,13 +12,15 @@ public class Building {
     private int windowGap = 5;
     private int antennaLocation;
     private int antennaHeight;
+    private CityScape cityScape;
     ArrayList<Integer> xvalues = new ArrayList<>();
 
     ArrayList<Integer> yvalues = new ArrayList<>();
     HashMap<Integer[], Boolean> lightsOn = new HashMap<>();
 
 
-    public Building(int x, int y, int xWindows, int yWindows, double lights){
+    public Building(CityScape cityScape, int x, int y, int xWindows, int yWindows, double lights){
+        this.cityScape = cityScape;
         this.x = x;
         this.y = y;
         this.xWindows = xWindows;
@@ -55,7 +53,7 @@ public class Building {
     public void paint(Graphics2D g2d){
         g2d.setColor(Color.GRAY);
         g2d.fillRect(x,y,xWindows*windowWidth + (this.xWindows+1)*windowGap, yWindows*windowWidth + (this.yWindows+1)*windowGap + 30);
-        this.y = CityScape.height-(yWindows*30 + (yWindows+1)*5 + 30);
+        this.y = cityScape.getHeight()-(yWindows*30 + (yWindows+1)*5 + 30);
         //windows
         for (Integer[] i : lightsOn.keySet()) {
             g2d.setColor(lightsOn.get(i) ? Color.YELLOW : Color.BLACK);

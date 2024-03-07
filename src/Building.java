@@ -55,7 +55,7 @@ public class Building {
     public void paint(Graphics2D g2d){
         g2d.setColor(Color.GRAY);
         g2d.fillRect(x,y,xWindows*windowWidth + (this.xWindows+1)*windowGap, yWindows*windowWidth + (this.yWindows+1)*windowGap + 30);
-
+        this.y = CityScape.height-(yWindows*30 + (yWindows+1)*5 + 30);
         //windows
         for (Integer[] i : lightsOn.keySet()) {
             g2d.setColor(lightsOn.get(i) ? Color.YELLOW : Color.BLACK);

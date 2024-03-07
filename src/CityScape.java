@@ -4,8 +4,8 @@ import javax.swing.*;
 public class CityScape extends JPanel {
 
     public static int width = 1020;
-    private static int height = 640;
-    private Building[] b = new Building[8];
+    public static int height = 640;
+    private Building[] b = new Building[40];
     private Ufo[] ufos = new Ufo[5];
 
     private ArrayList<Integer[]> stars = new ArrayList<>();
@@ -16,12 +16,12 @@ public class CityScape extends JPanel {
         double[] lights = {0.5, 0.3, 0.74, 0.6, 0.5, 0.3, 0.7, 0.5};
         int curr = 10;
         for (int i = 0; i < b.length; i++) {
-            b[i] = new Building(curr, height-(yWindows[i]*30 + (yWindows[i]+1)*5 + 30), xWindows[i], yWindows[i], lights[i]);
-            curr += 10 + xWindows[i]*30 + (xWindows[i]+1)*5;
+            b[i] = new Building(curr, height-(yWindows[i%yWindows.length]*30 + (yWindows[i%yWindows.length]+1)*5 + 30), xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
+            curr += 10 + xWindows[i%xWindows.length]*30 + (xWindows[i%xWindows.length]+1)*5;
         }
 
-        for (int i = 0; i < 150; i++) {
-            stars.add(new Integer[]{(int) Math.floor(Math.random() * width), (int) Math.floor(Math.random() * height)});
+        for (int i = 0; i < 900; i++) {
+            stars.add(new Integer[]{(int) Math.floor(Math.random() * 2000), (int) Math.floor(Math.random() * 2000)});
         }
 
         ufos[0] = new Ufo(0, 0);
@@ -39,6 +39,8 @@ public class CityScape extends JPanel {
 
     @Override
     public void paint(Graphics g) {
+        width = this.getWidth();
+        height = this.getHeight();
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);

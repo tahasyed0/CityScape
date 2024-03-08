@@ -11,7 +11,7 @@ public class CityScape extends JPanel {
     public CityScape() {
         int[] xWindows = {3, 2, 3, 5, 4, 4, 1, 3};
         int[] yWindows = {4, 6, 2, 5, 9, 6, 8, 3};
-        double[] lights = {0.5, 0.3, 0.74, 0.6, 0.5, 0.3, 0.7, 0.5};
+        double[] lights = {0.5, 0.6, 0.74, 0.6, 0.5, 0.3, 0.7, 0.5};
         int curr = 10;
         for (int i = 0; i < b.length; i++) {
             b[i] = new Building(this, curr, getHeight()-(yWindows[i%yWindows.length]*30 + (yWindows[i%yWindows.length]+1)*5 + 30), xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
@@ -76,6 +76,7 @@ public class CityScape extends JPanel {
         frame.add(cityScape);
         frame.setSize(1020, 640);
         frame.setVisible(true);
+        frame.setMinimumSize(new Dimension(1020, 640));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true)

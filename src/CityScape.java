@@ -15,7 +15,7 @@ public class CityScape extends JPanel {
         double[] lights = {0.5, 0.6, 0.74, 0.6, 0.5, 0.3, 0.7, 0.5};
         int curr = 10;
         for (int i = 0; i < b.length; i++) {
-            b[i] = new Building(this, curr, getHeight()-(yWindows[i%yWindows.length]*30 + (yWindows[i%yWindows.length]+1)*5 + 30), xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
+            b[i] = new Building(this, curr, xWindows[i%xWindows.length], yWindows[i%yWindows.length], lights[i%lights.length]);
             curr += 10 + xWindows[i%xWindows.length]*30 + (xWindows[i%xWindows.length]+1)*5;
         }
 

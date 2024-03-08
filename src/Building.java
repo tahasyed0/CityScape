@@ -19,10 +19,9 @@ public class Building {
     HashMap<Integer[], Boolean> lightsOn = new HashMap<>();
 
 
-    public Building(CityScape cityScape, int x, int y, int xWindows, int yWindows, double lights){
+    public Building(CityScape cityScape, int x, int xWindows, int yWindows, double lights){
         this.cityScape = cityScape;
         this.x = x;
-        this.y = y;
         this.xWindows = xWindows;
         this.yWindows = yWindows;
         this.lights = lights;
@@ -52,8 +51,8 @@ public class Building {
 
     public void paint(Graphics2D g2d){
         g2d.setColor(Color.GRAY);
-        g2d.fillRect(x,y,xWindows*windowWidth + (this.xWindows+1)*windowGap, yWindows*windowWidth + (this.yWindows+1)*windowGap + 30);
         this.y = cityScape.getHeight()-(yWindows*30 + (yWindows+1)*5 + 30);
+        g2d.fillRect(x,y,xWindows*windowWidth + (this.xWindows+1)*windowGap, yWindows*windowWidth + (this.yWindows+1)*windowGap + 30);
         //windows
         for (Integer[] i : lightsOn.keySet()) {
             g2d.setColor(lightsOn.get(i) ? Color.YELLOW : Color.BLACK);

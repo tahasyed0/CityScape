@@ -17,6 +17,7 @@ public class Car {
     public void move() {
         if (x > cityScape.getWidth()-50 || x < 0) {
             dx = -speed;
+            x = cityScape.getWidth()-50;
         }
         if (x + dx < 0) {
             dx = speed;

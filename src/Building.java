@@ -73,9 +73,6 @@ public class Building {
         g2d.fillRect(x+(this.getWidth())/2-9, y+getHeight()-20, 18, 20);
         g2d.setColor(Color.BLACK);
         g2d.fillRect(x+(this.getWidth())/2-1, y+getHeight()-20, 2, 20);
-        //Door 2.0
-//        Image door = new ImageIcon("door.png").getImage();
-//        g2d.drawImage(door, x+(this.getWidth())/2-9, y+getHeight()-20, null);
 
         //Antenna
         g2d.setColor(Color.GRAY);

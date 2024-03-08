@@ -5,6 +5,7 @@ public class CityScape extends JPanel {
 
     private Building[] b = new Building[40];
     private Ufo[] ufos = new Ufo[5];
+    private Car car = new Car(this, 0);
 
     private ArrayList<Integer[]> stars = new ArrayList<>();
 
@@ -33,6 +34,7 @@ public class CityScape extends JPanel {
         for (Ufo u : ufos) {
             u.move();
         }
+        car.move();
     }
 
     @Override
@@ -65,6 +67,8 @@ public class CityScape extends JPanel {
         for (Ufo u : ufos) {
             u.paint(g2d);
         }
+
+        car.paint(g2d);
 
     }
 

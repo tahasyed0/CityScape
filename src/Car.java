@@ -15,9 +15,9 @@ public class Car {
     }
 
     public void move() {
-        if (x > cityScape.getWidth()-50 || x < 0) {
+        if (x > cityScape.getWidth()-car.getWidth(null) || x < 0) {
             dx = -speed;
-            x = cityScape.getWidth()-50;
+            x = cityScape.getWidth()-car.getWidth(null);
         }
         if (x + dx < 0) {
             dx = speed;
@@ -27,9 +27,9 @@ public class Car {
 
     public void paint(Graphics2D g2d) {
         if (dx < 0) {
-            g2d.drawImage(car, x+50, cityScape.getHeight() - 20, -50, 20, null);
+            g2d.drawImage(car, x+car.getWidth(null), cityScape.getHeight() - car.getHeight(null), -car.getWidth(null), car.getHeight(null), null);
         } else {
-            g2d.drawImage(car, x, cityScape.getHeight() - 20, null);
+            g2d.drawImage(car, x, cityScape.getHeight() - car.getHeight(null), null);
         }
     }
 }

@@ -61,6 +61,9 @@ public class CityScape extends JPanel {
         //buildings
         g2d.setColor(Color.GRAY);
         for (Building k : b) {
+            if (k.getX() > this.getWidth()) {
+                break;
+            }
             k.paint(g2d);
         }
 

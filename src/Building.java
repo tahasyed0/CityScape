@@ -86,4 +86,12 @@ public class Building {
     public int getWidth() {
         return xWindows*windowWidth + (this.xWindows+1)*windowGap;
     }
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+
 }

@@ -16,10 +16,10 @@ public class Ufo {
 
     public void move() {
 
-        if (y > cityScape.getHeight()-440) {
+        if (y > cityScape.getHeight()-440 || y < 0) {
             y = (int) (Math.random()*(cityScape.getHeight()-440));
         }
-        if (x > cityScape.getWidth()-40) {
+        if (x > cityScape.getWidth()-40 || x < 0) {
             x = (int) (Math.random()*(cityScape.getWidth()-40));
         }
 
